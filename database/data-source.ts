@@ -1,14 +1,15 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { ConfigService } from '@nestjs/config';
+import * as dotenv from 'dotenv';
 
-const configService = new ConfigService();
+dotenv.config();
+
 export const dataSourceOptions: DataSourceOptions = {
   type: 'mysql',
-  host: configService.get('database.host'),
-  port: configService.get('database.port'),
-  username: configService.get('database.username'),
-  password: configService.get('database.password'),
-  database: configService.get('database.name'),
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/database/migrations/*.js'],
 };
