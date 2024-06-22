@@ -14,7 +14,7 @@ This project is a boilerplate setup for building a NestJS application with Docke
 
 ## Prerequisites
 
-- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker and docker compose](https://www.docker.com/products/docker-desktop)
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/getting-started/install)
 
