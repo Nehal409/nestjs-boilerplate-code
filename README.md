@@ -1,73 +1,67 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS Boilerplate Project
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a boilerplate setup for building a NestJS application with Docker, MySQL, TypeORM, and various other configurations and tools. It is intended to provide a solid starting point for future projects.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+1. **Docker Setup**: Includes Docker configuration for containerizing the application.
+2. **MySQL Database Setup**: Configured to use a MySQL database.
+3. **TypeORM Setup with Migrations**: Integrated TypeORM for database interactions, including initial migrations for the `users` table.
+4. **Middleware Setup**: Includes error handling and response formatting middleware.
+5. **Swagger API Docs Setup**: Automatically generates API documentation using Swagger.
+6. **Configurations Setup**: Centralized configuration management.
+7. **.env.sample File**: Template for environment variables. Users must create a `.env` file in the root directory and copy contents from `.env.sample`.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
 
-## Installation
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Node.js](https://nodejs.org/en/download/)
+- [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/getting-started/install)
+
+## Getting Started
+
+### Clone the Repository
 
 ```bash
-$ npm install
+git clone https://github.com/your-repo/nestjs-boilerplate.git
+cd nestjs-boilerplate
 ```
 
-## Running the app
+### Setup Environment Variables
+
+1. Copy the contents of `.env.sample` to a new `.env` file in the root directory:
+
+    ```bash
+    cp .env.sample .env
+    ```
+
+2. Update the `.env` file with your specific environment variables.
+
+### Running the Application
+
+To build and run the application using Docker, execute the following command:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker-compose up --build
 ```
 
-## Test
+This will start the NestJS application and MySQL database in Docker containers.
+
+## TypeORM and Migrations
+
+This boilerplate uses TypeORM for database interactions. Initial migrations include the setup for a `users` table. To run migrations, use the following commands:
 
 ```bash
-# unit tests
-$ npm run test
+# Run migrations
+npm run migrate:run
 
-# e2e tests
-$ npm run test:e2e
+# Revert migrations
+npm run migrate:revert
 
-# test coverage
-$ npm run test:cov
+# Generate a new migration
+npm run migrate:create MigrationName
 ```
 
-## Support
+## Swagger API Documentation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+API documentation is automatically generated using Swagger. After starting the application, you can access the Swagger UI at `http://localhost:8000/api/v1/docs`.
